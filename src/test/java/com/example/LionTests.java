@@ -11,10 +11,14 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
 
+import static org.junit.Assert.fail;
+
 @RunWith(MockitoJUnitRunner.class)
 public class LionTests {
 
     private static final String SEX = "Самец";
+    private static final String UNSUPPORTED_SEX = "Пыльца";
+    private static final String TEXT_EXCEPTION = "Используйте допустимые значения пола животного - самец или самка";
 
     @Mock
     Feline feline;
@@ -36,5 +40,11 @@ public class LionTests {
         Lion lion = new Lion(SEX, feline);
         Mockito.when(feline.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
         Assert.assertEquals(List.of("Животные", "Птицы", "Рыба"), lion.getFood());
+    }
+
+    @Test(expected = Exception.class)
+    public void doesHaveManeException() throws Exception {
+       Lion lion = new Lion(UNSUPPORTED_SEX, feline);
+       lion.doesHaveMane();
     }
 }
