@@ -18,7 +18,6 @@ public class LionTests {
 
     private static final String SEX = "Самец";
     private static final String UNSUPPORTED_SEX = "Пыльца";
-    private static final String TEXT_EXCEPTION = "Используйте допустимые значения пола животного - самец или самка";
 
     @Mock
     Feline feline;
